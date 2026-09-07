@@ -1,0 +1,88 @@
+<ActionBar title="Detalle del Producto" class="action-bar">
+    <NavigationButton text="Atrás" android.systemIcon="ic_menu_back" (tap)="onBackTap()"></NavigationButton>
+</ActionBar>
+
+<ScrollView class="page">
+    <StackLayout *ngIf="product" class="detail-container">
+        <Label [text]="product.name" class="product-title"></Label>
+        
+        <StackLayout class="info-section">
+            <Label text="Descripción:" class="section-label"></Label>
+            <Label [text]="product.description" class="product-detail-text" textWrap="true"></Label>
+            
+            <Label text="Precio:" class="section-label"></Label>
+            <Label [text]="'$' + product.price" class="product-price-large"></Label>
+            
+            <Label text="Categoría:" class="section-label"></Label>
+            <Label [text]="product.category" class="product-category-text"></Label>
+        </StackLayout>
+
+        <StackLayout class="edit-section">
+            <Label text="Editar Producto" class="section-title"></Label>
+            
+            <Label text="Nombre:" class="field-label"></Label>
+            <TextField 
+                [(ngModel)]="editedName" 
+                hint="Nombre del producto"
+                class="input-field">
+            </TextField>
+            
+            <Label text="Precio:" class="field-label"></Label>
+            <TextField 
+                [(ngModel)]="editedPrice" 
+                keyboardType="number"
+                hint="0.00"
+                class="input-field">
+            </TextField>
+            
+            <Button 
+                text="Guardar Cambios" 
+                (tap)="onSaveChanges()"
+                class="btn btn-primary">
+            </Button>
+        </StackLayout>
+
+        <StackLayout class="review-section">
+            <Label text="Dejar una Reseña" class="section-title"></Label>
+            
+            <Label text="Email:" class="field-label"></Label>
+            <TextField 
+                [(ngModel)]="userEmail"
+                emailValidator
+                hint="tu@email.com"
+                keyboardType="email"
+                class="input-field">
+            </TextField>
+            <Label 
+                *ngIf="userEmail && !userEmail.includes('@')" 
+                text="✗ Email inválido" 
+                class="error-text">
+            </Label>
+            
+            <Label text="Reseña (mín. 10 caracteres):" class="field-label"></Label>
+            <TextView 
+                [(ngModel)]="reviewText"
+                [minLength]="10"
+                hint="Escribe tu opinión sobre el producto..."
+                class="textarea-field">
+            </TextView>
+            <Label 
+                *ngIf="reviewText && reviewText.length < 10" 
+                [text]="'✗ Faltan ' + (10 - reviewText.length) + ' caracteres'" 
+                class="error-text">
+            </Label>
+            
+            <Button 
+                text="Enviar Reseña" 
+                (tap)="onSubmitReview()"
+                class="btn btn-secondary">
+            </Button>
+        </StackLayout>
+
+        <Button text="Agregar al Carrito" class="btn btn-success"></Button>
+    </StackLayout>
+    
+    <StackLayout *ngIf="!product" class="error-container">
+        <Label text="Producto no encontrado" class="error-text"></Label>
+    </StackLayout>
+</ScrollView>

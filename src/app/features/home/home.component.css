@@ -1,0 +1,157 @@
+.page {
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.home-container {
+    padding: 16;
+}
+
+.welcome-section {
+    padding: 20;
+    text-align: center;
+    background-color: #3498db;
+    border-radius: 8;
+    margin-bottom: 16;
+}
+
+.welcome-title {
+    font-size: 28;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 8;
+}
+
+.welcome-subtitle {
+    font-size: 16;
+    color: #ecf0f1;
+}
+
+.read-now-section {
+    margin-bottom: 20;
+}
+
+.section-title {
+    font-size: 20;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4;
+}
+
+.section-description {
+    font-size: 13;
+    color: #7f8c8d;
+    margin-bottom: 16;
+}
+
+.item-count {
+    font-size: 14;
+    font-weight: bold;
+    color: #3498db;
+    background-color: #ecf0f1;
+    padding: 4 12;
+    border-radius: 12;
+}
+
+.empty-state {
+    padding: 40 20;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 48;
+    text-align: center;
+    margin-bottom: 12;
+}
+
+.empty-message {
+    font-size: 18;
+    font-weight: bold;
+    color: #34495e;
+    text-align: center;
+    margin-bottom: 8;
+}
+
+.empty-hint {
+    font-size: 14;
+    color: #7f8c8d;
+    text-align: center;
+}
+
+.read-now-item {
+    background-color: #ffffff;
+    margin-bottom: 12;
+    padding: 16;
+    border-radius: 8;
+    border-width: 1;
+    border-color: #ecf0f1;
+}
+
+.item-name {
+    font-size: 18;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4;
+}
+
+.item-description {
+    font-size: 14;
+    color: #7f8c8d;
+    margin-bottom: 12;
+}
+
+.item-meta {
+    margin-top: 8;
+}
+
+.item-price {
+    font-size: 16;
+    font-weight: bold;
+    color: #27ae60;
+    margin-right: 12;
+}
+
+.item-category {
+    font-size: 14;
+    color: #3498db;
+    background-color: #ecf0f1;
+    padding: 4 8;
+    border-radius: 4;
+}
+
+.btn-remove {
+    font-size: 18;
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 8;
+    border-radius: 4;
+    width: 40;
+    height: 40;
+}
+
+.info-section {
+    padding: 16;
+    background-color: #ecf0f1;
+    border-radius: 8;
+}
+
+.info-text {
+    font-size: 14;
+    color: #34495e;
+    margin-bottom: 12;
+}
+
+.info-item {
+    font-size: 13;
+    color: #7f8c8d;
+    margin-left: 8;
+    margin-bottom: 6;
+}
+
+.divider {
+    height: 1;
+    background-color: #ecf0f1;
+    margin-top: 20;
+    margin-bottom: 20;
+}
+

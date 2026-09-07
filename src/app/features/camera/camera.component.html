@@ -1,0 +1,89 @@
+<ActionBar title="Cámara y Compartir" class="action-bar"></ActionBar>
+
+<ScrollView class="page">
+    <StackLayout class="camera-container">
+        
+        <StackLayout class="section">
+            <Label text="Cámara" class="section-title"></Label>
+            <Label text="Toma fotos con la cámara del dispositivo" class="section-description"></Label>
+            
+            <StackLayout *ngIf="capturedImage" class="image-preview">
+                <Image [src]="capturedImage" class="captured-image" stretch="aspectFit"></Image>
+                <Button 
+                    text=" Eliminar Foto" 
+                    (tap)="onClearPhoto()" 
+                    class="btn btn-danger">
+                </Button>
+            </StackLayout>
+            
+            <StackLayout *ngIf="!capturedImage" class="image-placeholder">
+                <Label text="📷" class="placeholder-icon"></Label>
+                <Label text="No hay foto capturada" class="placeholder-text"></Label>
+            </StackLayout>
+            
+            <Button 
+                text="Tomar Foto" 
+                (tap)="onTakePhoto()" 
+                class="btn btn-primary action-button">
+            </Button>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="section">
+            <Label text="Compartir Texto" class="section-title"></Label>
+            <Label text="Comparte contenido de texto en redes sociales" class="section-description"></Label>
+            
+            <TextView 
+                [(ngModel)]="shareTextContent" 
+                hint="Escribe algo para compartir..."
+                class="text-area"
+                editable="true">
+            </TextView>
+            
+            <Button 
+                text="Compartir Texto" 
+                (tap)="onShareText()" 
+                class="btn btn-success action-button">
+            </Button>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="section">
+            <Label text="Compartir Imágenes" class="section-title"></Label>
+            <Label text="Comparte imágenes en redes sociales" class="section-description"></Label>
+            
+            <Button 
+                text="Compartir Imagen de Ejemplo" 
+                (tap)="onShareSampleImage()" 
+                class="btn btn-info action-button">
+            </Button>
+            
+            <Button 
+                text="Compartir Foto Capturada" 
+                (tap)="onShareCapturedPhoto()" 
+                [isEnabled]="capturedImage !== null"
+                class="btn btn-warning action-button">
+            </Button>
+            
+            <Button 
+                text="Compartir URL Proyecto" 
+                (tap)="onShareUrl()" 
+                class="btn btn-secondary action-button">
+            </Button>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <!-- Información -->
+        <StackLayout class="section">
+            <Label text="ℹInformación" class="section-title"></Label>
+            <Label text="• Plugin Camera: @nativescript/camera" class="info-text"></Label>
+            <Label text="• Plugin Social Share: @nativescript/social-share" class="info-text"></Label>
+            <Label text="• Las fotos se guardan en la galería" class="info-text"></Label>
+            <Label text="• Puedes compartir en WhatsApp, Facebook, etc." class="info-text"></Label>
+        </StackLayout>
+
+    </StackLayout>
+</ScrollView>

@@ -1,0 +1,70 @@
+<ActionBar title="Inicio" class="action-bar">
+    <ActionItem 
+        text="🗑️ Limpiar Todo" 
+        (tap)="onClearAll()" 
+        ios.position="right"
+        android.position="actionBar">
+    </ActionItem>
+</ActionBar>
+
+<ScrollView class="page">
+    <StackLayout class="home-container">
+        <StackLayout class="welcome-section">
+            <Label [text]="'Hola, ' + username + '!'" class="welcome-title"></Label>
+            <Label text="Bienvenido a mi aplicacion" class="welcome-subtitle"></Label>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="read-now-section">
+            <FlexboxLayout flexDirection="row" justifyContent="space-between" alignItems="center">
+                <Label text="Leyendo Ahora" class="section-title"></Label>
+                <Label [text]="(readNowCount$ | async) + ' items'" class="item-count"></Label>
+            </FlexboxLayout>
+            <Label text="Items agregados desde Favoritos con Redux" class="section-description"></Label>
+
+            <StackLayout *ngIf="(readNowCount$ | async) === 0" class="empty-state">
+                <Label text="X" class="empty-icon"></Label>
+                <Label text="No hay items en Leer Ahora" class="empty-message"></Label>
+                <Label text="Ve a Favoritos y presiona 'Leer Ahora'" class="empty-hint"></Label>
+            </StackLayout>
+
+            <StackLayout *ngIf="(readNowCount$ | async) > 0">
+                <StackLayout 
+                    *ngFor="let item of readNowItems$ | async" 
+                    class="read-now-item">
+                    
+                    <FlexboxLayout flexDirection="column">
+                        <Label [text]="item.name" class="item-name"></Label>
+                        <Label [text]="item.description" class="item-description" textWrap="true"></Label>
+                        
+                        <FlexboxLayout flexDirection="row" justifyContent="space-between" alignItems="center" class="item-meta">
+                            <FlexboxLayout flexDirection="row">
+                                <Label [text]="'$' + item.price" class="item-price"></Label>
+                                <Label [text]="item.category" class="item-category"></Label>
+                            </FlexboxLayout>
+                            
+                            <Button 
+                                text="❌" 
+                                (tap)="onRemoveItem(item)" 
+                                class="btn-remove">
+                            </Button>
+                        </FlexboxLayout>
+                    </FlexboxLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="info-section">
+            <Label text="ℹAcerca de esta app" class="section-title"></Label>
+            <Label text="Esta aplicación demuestra:" class="info-text"></Label>
+            <Label text="• Integración con API Express" class="info-item"></Label>
+            <Label text="• Gestión de estado con Redux (NgRx)" class="info-item"></Label>
+            <Label text="• Persistencia con ApplicationSettings" class="info-item"></Label>
+            <Label text="• Filtrado y búsqueda de productos" class="info-item"></Label>
+            <Label text="• Sistema de favoritos" class="info-item"></Label>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>

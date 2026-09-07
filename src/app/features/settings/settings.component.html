@@ -1,0 +1,138 @@
+<ActionBar title="Configuración" class="action-bar"></ActionBar>
+
+<ScrollView class="page">
+    <StackLayout class="settings-container">       
+
+        <StackLayout class="settings-section">
+            <Label text="Nombre de Usuario" class="section-title"></Label>
+            <Label text="Este nombre se guarda de manera persistente usando AppSettings" 
+                   class="section-description" textWrap="true"></Label>
+            
+            <TextField 
+                [(ngModel)]="username" 
+                hint="Ingresa tu nombre"
+                class="input">
+            </TextField>
+            
+            <FlexboxLayout flexDirection="row" justifyContent="space-around" class="button-group">
+                <Button 
+                    text="Guardar" 
+                    (tap)="onSaveUsername()" 
+                    class="btn btn-primary">
+                </Button>
+                <Button 
+                    text="Resetear" 
+                    (tap)="onResetUsername()" 
+                    class="btn btn-secondary">
+                </Button>
+            </FlexboxLayout>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="settings-section">
+            <Label text="Configuración del API" class="section-title"></Label>
+            <Label text="Configura la URL de Ngrok o el servidor Express para conectarse al API" 
+                   class="section-description" textWrap="true"></Label>
+            
+            <Label text="URL actual:" class="label-small"></Label>
+            <TextField 
+                [(ngModel)]="ngrokUrl" 
+                hint="https://tu-url.ngrok.io"
+                class="input">
+            </TextField>
+            
+            <Label text="Ejemplos:" class="label-small"></Label>
+            <Label text="• http://localhost:3000" class="example-text"></Label>
+            <Label text="• https://abc123.ngrok.io" class="example-text"></Label>
+            <Label text="• https://tu-servidor.com" class="example-text"></Label>
+            
+            <FlexboxLayout flexDirection="row" justifyContent="space-around" class="button-group">
+                <Button 
+                    text="Guardar" 
+                    (tap)="onSaveNgrokUrl()" 
+                    class="btn btn-primary">
+                </Button>
+                <Button 
+                    text="Reset" 
+                    (tap)="onResetNgrokUrl()" 
+                    class="btn btn-secondary">
+                </Button>
+            </FlexboxLayout>
+            
+            <Button 
+                text="🔌 Probar Conexión" 
+                (tap)="onTestConnection()" 
+                [isEnabled]="!isTesting"
+                class="btn btn-info test-button">
+            </Button>
+            
+            <Label 
+                [text]="isConnected ? 'Conectado' : 'Desconectado'" 
+                [class]="isConnected ? 'status-success' : 'status-warning'"
+                *ngIf="!isTesting">
+            </Label>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="settings-section">
+            <Label text="Firebase Cloud Messaging" class="section-title"></Label>
+            <Label text="Token FCM para notificaciones push" 
+                   class="section-description" textWrap="true"></Label>
+            
+            <Label text="Token FCM:" class="label-small"></Label>
+            <Label 
+                [text]="fcmToken || 'Cargando token...'" 
+                class="token-text" 
+                textWrap="true">
+            </Label>
+            
+            <Button 
+                text="Copiar Token" 
+                (tap)="onCopyToken()" 
+                class="btn btn-info"
+                [isEnabled]="!!fcmToken">
+            </Button>
+            
+            <Label text="Notificaciones Recibidas" class="section-title" marginTop="20"></Label>
+            
+            <StackLayout *ngIf="notifications.length === 0" class="empty-state">
+                <Label text="No hay notificaciones aún" class="info-text"></Label>
+            </StackLayout>
+            
+            <StackLayout *ngIf="notifications.length > 0">
+                <StackLayout 
+                    *ngFor="let notification of notifications" 
+                    class="notification-item">
+                    <Label [text]="notification.title" class="notification-title"></Label>
+                    <Label [text]="notification.body" class="notification-body" textWrap="true"></Label>
+                    <Label [text]="notification.receivedAt" class="notification-time"></Label>
+                </StackLayout>
+                
+                <Button 
+                    text="Limpiar Notificaciones" 
+                    (tap)="onClearNotifications()" 
+                    class="btn btn-secondary">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout class="divider"></StackLayout>
+
+        <StackLayout class="settings-section">
+            <Label text="ℹInstrucciones" class="section-title"></Label>
+            <Label text="1. Inicia el servidor Express: cd express-server && npm start" 
+                   class="info-text" textWrap="true"></Label>
+            <Label text="2. Expone el servidor con Ngrok: ngrok http 3000" 
+                   class="info-text" textWrap="true"></Label>
+            <Label text="3. Copia la URL HTTPS que proporciona Ngrok" 
+                   class="info-text" textWrap="true"></Label>
+            <Label text="4. Pégala en el campo de URL y guarda" 
+                   class="info-text" textWrap="true"></Label>
+            <Label text="5. Prueba la conexión antes de usar la búsqueda" 
+                   class="info-text" textWrap="true"></Label>
+        </StackLayout>
+
+    </StackLayout>
+</ScrollView>

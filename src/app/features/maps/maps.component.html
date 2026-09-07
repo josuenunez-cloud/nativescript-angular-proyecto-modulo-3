@@ -1,0 +1,50 @@
+<ActionBar title="Google Maps" class="action-bar"></ActionBar>
+
+<GridLayout rows="*, auto" class="page">
+    <MapView 
+        #mapView
+        row="0"
+        [latitude]="latitude" 
+        [longitude]="longitude" 
+        [zoom]="zoom"
+        [bearing]="0"
+        [tilt]="0"
+        (mapReady)="onMapReady($event)"
+        (markerSelect)="onMarkerSelect($event)"
+        (coordinateTapped)="onCoordinateTapped($event)"
+        class="map-view">
+    </MapView>
+
+    <StackLayout row="1" class="controls-panel">
+        <Label [text]="'Ubicación: ' + latitude.toFixed(4) + ', ' + longitude.toFixed(4)" 
+               class="location-label">
+        </Label>
+        
+        <FlexboxLayout flexDirection="row" flexWrap="wrap" justifyContent="space-around" class="button-group">
+            <Button 
+                text="Mi Ubicación" 
+                (tap)="onAddMarkerAtCurrentLocation()" 
+                class="btn btn-primary map-button">
+            </Button>
+            <Button 
+                text="Agregar Marker" 
+                (tap)="onAddCustomMarker()" 
+                class="btn btn-success map-button">
+            </Button>
+            <Button 
+                text="Centrar" 
+                (tap)="onCenterMap()" 
+                class="btn btn-info map-button">
+            </Button>
+            <Button 
+                text="Limpiar" 
+                (tap)="onClearMarkers()" 
+                class="btn btn-danger map-button">
+            </Button>
+        </FlexboxLayout>
+        
+        <Label [text]="'Total markers: ' + markers.length" 
+               class="markers-count">
+        </Label>
+    </StackLayout>
+</GridLayout>

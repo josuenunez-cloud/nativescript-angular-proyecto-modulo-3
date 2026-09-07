@@ -1,0 +1,14 @@
+<GridLayout rows="auto, *">
+    <ScrollView row="0" orientation="horizontal" class="nav-bar-container">
+        <FlexboxLayout flexDirection="row" class="nav-bar">
+            <Button text="Home" (tap)="navigate('/home')" class="nav-button"></Button>
+            <Button text="Search" (tap)="navigate('/search')" class="nav-button"></Button>
+            <Button text="Favoritos" (tap)="navigate('/favorites')" class="nav-button"></Button>
+            <Button text="Camara" (tap)="navigate('/camera')" class="nav-button"></Button>
+            <Button text="Maps" (tap)="navigate('/maps')" class="nav-button"></Button>
+            <Button text="Settings" (tap)="navigate('/settings')" class="nav-button"></Button>
+        </FlexboxLayout>
+    </ScrollView>
+    
+    <page-router-outlet row="1"></page-router-outlet>
+</GridLayout>

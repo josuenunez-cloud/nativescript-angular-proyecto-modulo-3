@@ -1,0 +1,12 @@
+.nav-bar {
+    background-color: #3498db;
+    height: 60;
+}
+
+.nav-button {
+    background-color: transparent;
+    color: white;
+    font-size: 12;
+    border-width: 0;
+    height: 60;
+}

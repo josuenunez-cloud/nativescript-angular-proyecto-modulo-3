@@ -1,0 +1,38 @@
+<ActionBar title="Productos" class="action-bar">
+    <ActionItem 
+        text="↻" 
+        (tap)="onAnimateButton($event)" 
+        ios.position="right"
+        android.position="actionBar">
+    </ActionItem>
+</ActionBar>
+
+<StackLayout class="page">
+    <Label [text]="platformMessage" class="platform-message"></Label>
+    
+    <Label text="Lista de Productos" class="h2 text-center"></Label>
+    
+    <ScrollView>
+        <StackLayout>
+            <StackLayout 
+                *ngFor="let product of products" 
+                class="product-card"
+                (tap)="onProductTap(product.id)"
+                (longPress)="onLongPress(product)"
+                (doubleTap)="onDoubleTap(product)">
+                
+                <Label [text]="product.name" class="product-name"></Label>
+                <Label [text]="product.description" class="product-description"></Label>
+                <Label [text]="'$' + product.price" class="product-price"></Label>
+                <FlexboxLayout flexDirection="row" justifyContent="space-between" alignItems="center">
+                    <Label [text]="product.category" class="product-category"></Label>
+                    <Button 
+                        text="Cambiar Categoría" 
+                        (tap)="onChangeCategory(product, $event)" 
+                        class="category-btn">
+                    </Button>
+                </FlexboxLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>

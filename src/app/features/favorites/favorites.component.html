@@ -1,0 +1,50 @@
+<ActionBar title="Mis Favoritos" class="action-bar">
+    <ActionItem 
+        text="Limpiar" 
+        (tap)="onClearAll()" 
+        ios.position="right"
+        android.position="actionBar">
+    </ActionItem>
+</ActionBar>
+
+<StackLayout class="page">
+    <StackLayout *ngIf="favorites.length === 0" class="empty-state">
+        <Label text="*" class="empty-icon"></Label>
+        <Label text="No tienes favoritos aún" class="empty-message"></Label>
+        <Label text="Agrega productos desde la búsqueda" class="empty-hint"></Label>
+    </StackLayout>
+
+    <ScrollView *ngIf="favorites.length > 0">
+        <StackLayout>
+            <StackLayout 
+                *ngFor="let favorite of favorites" 
+                class="favorite-item"
+                (tap)="onItemTap(favorite)">
+                
+                <FlexboxLayout flexDirection="row" justifyContent="space-between" alignItems="center">
+                    <FlexboxLayout flexDirection="column" flex="1">
+                        <Label [text]="favorite.name" class="favorite-name"></Label>
+                        <Label [text]="favorite.description" class="favorite-description" textWrap="true"></Label>
+                        <FlexboxLayout flexDirection="row" justifyContent="space-between" class="favorite-meta">
+                            <Label [text]="'$' + favorite.price" class="favorite-price"></Label>
+                            <Label [text]="favorite.category" class="favorite-category"></Label>
+                        </FlexboxLayout>
+                    </FlexboxLayout>
+                </FlexboxLayout>
+                
+                <FlexboxLayout flexDirection="row" justifyContent="space-around" class="action-buttons">
+                    <Button 
+                        text="Leer Ahora" 
+                        (tap)="onReadNow(favorite)" 
+                        class="btn btn-primary read-now-btn">
+                    </Button>
+                    <Button 
+                        text="Eliminar" 
+                        (tap)="onRemoveFavorite(favorite)" 
+                        class="btn btn-danger remove-btn">
+                    </Button>
+                </FlexboxLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>

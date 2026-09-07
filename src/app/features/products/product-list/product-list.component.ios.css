@@ -1,0 +1,28 @@
+.page {
+    padding: 10;
+    background-color: #e3f2fd;
+}
+
+.platform-message {
+    font-size: 14;
+    color: #2196f3;
+    text-align: center;
+    margin: 10;
+    padding: 10;
+    background-color: #bbdefb;
+    border-radius: 10;
+}
+
+.product-card {
+    background-color: white;
+    margin: 12;
+    padding: 18;
+    border-radius: 12;
+    ios-overflow-safe-area: true;
+}
+
+.product-name {
+    font-size: 18;
+    font-weight: bold;
+    color: #0d47a1;
+}

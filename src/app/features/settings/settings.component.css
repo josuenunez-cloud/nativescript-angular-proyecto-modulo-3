@@ -1,0 +1,151 @@
+.settings-container {
+    padding: 16;
+}
+
+.settings-section {
+    margin-bottom: 20;
+}
+
+.section-title {
+    font-size: 20;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8;
+}
+
+.section-description {
+    font-size: 14;
+    color: #7f8c8d;
+    margin-bottom: 16;
+}
+
+.label-small {
+    font-size: 14;
+    font-weight: bold;
+    color: #34495e;
+    margin-top: 8;
+    margin-bottom: 4;
+}
+
+.input {
+    font-size: 16;
+    padding: 12;
+    margin-bottom: 12;
+    border-width: 1;
+    border-color: #bdc3c7;
+    border-radius: 4;
+    background-color: #ffffff;
+}
+
+.button-group {
+    margin-top: 12;
+    margin-bottom: 12;
+}
+
+.test-button {
+    margin-top: 16;
+    margin-bottom: 12;
+}
+
+.example-text {
+    font-size: 13;
+    color: #7f8c8d;
+    margin-left: 8;
+    margin-bottom: 4;
+}
+
+.info-text {
+    font-size: 13;
+    color: #34495e;
+    margin-bottom: 8;
+    line-height: 1.4;
+}
+
+.status-success {
+    font-size: 16;
+    font-weight: bold;
+    color: #27ae60;
+    text-align: center;
+    margin-top: 8;
+}
+
+.status-warning {
+    font-size: 16;
+    font-weight: bold;
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 8;
+}
+
+.divider {
+    height: 1;
+    background-color: #ecf0f1;
+    margin-top: 20;
+    margin-bottom: 20;
+}
+
+.btn {
+    font-size: 16;
+    font-weight: bold;
+    padding: 12;
+    border-radius: 4;
+    margin: 4;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: #ffffff;
+}
+
+.btn-info {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+.token-text {
+    font-size: 12;
+    font-family: monospace;
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    padding: 12;
+    border-radius: 4;
+    margin-bottom: 12;
+}
+
+.empty-state {
+    padding: 20;
+    text-align: center;
+}
+
+.notification-item {
+    background-color: #f8f9fa;
+    padding: 12;
+    margin-bottom: 8;
+    border-radius: 4;
+    border-left-width: 4;
+    border-left-color: #3498db;
+}
+
+.notification-title {
+    font-size: 15;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4;
+}
+
+.notification-body {
+    font-size: 14;
+    color: #34495e;
+    margin-bottom: 4;
+}
+
+.notification-time {
+    font-size: 12;
+    color: #95a5a6;
+    font-style: italic;
+}

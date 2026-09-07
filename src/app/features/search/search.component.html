@@ -1,0 +1,53 @@
+<ActionBar title="Buscar Productos" class="action-bar"></ActionBar>
+
+<StackLayout class="page">
+    <StackLayout class="search-container">
+        <Label text="Buscar productos:" class="search-label"></Label>
+        <FlexboxLayout flexDirection="row" alignItems="center" class="search-form">
+            <TextField 
+                [(ngModel)]="searchQuery" 
+                hint="Buscar por nombre o descripción"
+                class="search-input"
+                flex="1">
+            </TextField>
+            <Button 
+                text="Buscar" 
+                (tap)="onSearch()" 
+                class="btn btn-primary search-button"
+                [isEnabled]="!isSearching">
+            </Button>
+        </FlexboxLayout>
+        <Button 
+            text="✖ Limpiar" 
+            (tap)="onClearSearch()" 
+            class="btn btn-secondary clear-button">
+        </Button>
+    </StackLayout>
+    <ListView 
+        [items]="products" 
+        (itemTap)="onItemTap($event)"
+        (pullToRefreshInitiated)="onPullToRefresh($event)"
+        class="list-group"
+        separatorColor="transparent">
+        <ng-template let-product="item">
+            <FlexboxLayout class="product-item" flexDirection="row" justifyContent="space-between" alignItems="center">
+                <FlexboxLayout flexDirection="column" class="product-info" flex="1">
+                    <Label [text]="product.name" class="product-name"></Label>
+                    <Label [text]="product.description" class="product-description" textWrap="true"></Label>
+                    <FlexboxLayout flexDirection="row" justifyContent="space-between" class="product-meta">
+                        <Label [text]="'$' + product.price" class="product-price"></Label>
+                        <Label [text]="product.category" class="product-category"></Label>
+                    </FlexboxLayout>
+                </FlexboxLayout>                
+                <FlexboxLayout flexDirection="row" alignItems="center">
+                    <Button 
+                        [text]="isFavorite(product.id) ? '*' : '☆'" 
+                        (tap)="onToggleFavorite(product)" 
+                        class="btn-favorite">
+                    </Button>
+                    <Label text="›" class="chevron"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </ng-template>
+    </ListView>
+</StackLayout>
